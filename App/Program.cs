@@ -7,7 +7,7 @@ namespace CajeroLite.App
         static void Main(string[] args)
         {
             IO.MostrarMensaje("===========================================","info");
-            Console.WriteLine("  Cajero- Lite Oscar Vanegas / Linda Ortiz");
+            Console.WriteLine(" Cajero- Lite Oscar Vanegas / Linda Ortiz"  );
             IO.MostrarMensaje("===========================================","info");
             Console.WriteLine();                  
             

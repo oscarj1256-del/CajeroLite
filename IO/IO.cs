@@ -8,11 +8,11 @@ namespace CajeroLite.App
         public static string MostrarMenu(string idUsuario)
         {
             Console.Clear();
-            MostrarMensaje("=====================================", "otro");
-            MostrarMensaje("        CAJEROLITE - MENÚ PRINCIPAL        ", "info");
-            MostrarMensaje("=====================================", "otro");
+            MostrarMensaje("=====================================", "info");
+            MostrarMensaje("        CAJEROLITE - MENÚ PRINCIPAL  ", "exito");
+            MostrarMensaje("=====================================", "info");
             Console.WriteLine();
-            MostrarMensaje($"Usuario conectado: {idUsuario}", "otro");
+            MostrarMensaje($"Usuario conectado: {idUsuario}", "info");
             Console.WriteLine();
 
             Console.WriteLine("1. Consultar saldo");
