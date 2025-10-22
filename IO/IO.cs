@@ -4,14 +4,41 @@ namespace CajeroLite.App
 {
     public static class IO
     {
+        // Muestra el menú principal y permite realizar operaciones básicas
+        public static string MostrarMenu(string idUsuario)
+        {
+            Console.Clear();
+            MostrarMensaje("=====================================", "otro");
+            MostrarMensaje("        CAJEROLITE - MENÚ PRINCIPAL        ", "info");
+            MostrarMensaje("=====================================", "otro");
+            Console.WriteLine();
+            MostrarMensaje($"Usuario conectado: {idUsuario}", "otro");
+            Console.WriteLine();
+
+            Console.WriteLine("1. Consultar saldo");
+            Console.WriteLine("2. Depositar dinero");
+            Console.WriteLine("3. Retirar dinero");
+            IO.MostrarMensaje("4. Salir","error");
+            Console.WriteLine();
+
+            // Capturamos la opción y la devolvemos
+            string opcion = LeerTexto("Seleccione una opción (1-4): ");
+            return opcion;
+        }
+
+
+
         public static void MostrarMensaje(string mensaje, string tipo = "info")
         {
             ConsoleColor colorOriginal = Console.ForegroundColor;
 
             switch (tipo.ToLower())
             {
-                case "info":
+                case "exito":
                     Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case "info":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     break;
                 case "error":
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -69,10 +96,18 @@ namespace CajeroLite.App
                 }
                 else if (char.IsDigit(tecla.KeyChar))
                 {
-                    // Solo acepta números
-                    pin += tecla.KeyChar;
-                    Console.Write("*");
+                    if (pin.Length < 4) // solo permite 4 dígitos
+                    {
+                        pin += tecla.KeyChar;
+                        Console.Write("*");
+                    }
+                    else
+                    {
+                        // opcional: hacer un sonido si intenta escribir más
+                        Console.Beep();
+                    }
                 }
+
                 else
                 {
                     // Si presiona otra tecla, se ignora

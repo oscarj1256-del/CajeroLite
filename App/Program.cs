@@ -6,57 +6,25 @@ namespace CajeroLite.App
     {
         static void Main(string[] args)
         {
-            Console.Title = "Prueba del módulo IO";
+            IO.MostrarMensaje("===========================================","info");
+            Console.WriteLine("  Cajero- Lite Oscar Vanegas / Linda Ortiz");
+            IO.MostrarMensaje("===========================================","info");
+            Console.WriteLine();                  
+            
+            var usuarioId = Datos.IniciarSesion();
 
-            Console.WriteLine("=======================================");
-            Console.WriteLine("  PRUEBA DE LA CLASE IO (Entrada/Salida)");
-            Console.WriteLine("=======================================");
-            Console.WriteLine();
-
-            //IO.MostrarMensaje("Este es un mensaje informativo (verde).", "info");
-            //IO.MostrarMensaje("Este es un mensaje de error (rojo).", "error");
-            //IO.MostrarMensaje("Y este es un mensaje neutro (gris).", "otro");
-            //Console.WriteLine();
-
-            string nombre = IO.LeerTexto("Por favor, ingrese su nombre: ");
-            IO.MostrarMensaje($"Hola, {nombre}! Ingresa Bienvenido al simulador", "info");
-
-            Console.WriteLine();
-            Console.Write("Presione cualquier tecla Para CONTINUAR...");
-            //Console.ReadKey(intercept: true);
-            //string pin = IO.LeerPIN("Ingrese su PIN: ");
-            //IO.MostrarMensaje($"PIN ingresado correctamente. (Valor oculto: {pin})", "info");
-
-            Console.WriteLine("=== PRUEBA DE DATOS ===");
-            Console.Write("Ingrese un ID de usuario: ");
-            string id = Console.ReadLine() ?? "";
-
-            if (Datos.ExisteUsuario(id))
+            if (usuarioId is null)
             {
-                Console.Write("Ingrese el PIN: ");
-                string pin = Console.ReadLine() ?? "";
-
-                if (Datos.ValidarPIN(id, pin))
-                {
-                    decimal saldo = Datos.ObtenerSaldo(id);
-                    Console.WriteLine($"Acceso correcto. Su saldo actual es: {saldo:C}");
-                }
-                else
-                {
-                    Console.WriteLine("PIN incorrecto.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Usuario no encontrado.");
+                IO.MostrarMensaje("Acceso bloqueado. Demasiados intentos fallidos.", "error");
+                return;
             }
 
-
+            bool continuar = true;
+            while (continuar)
+            {
+               string opcion = IO.MostrarMenu(usuarioId);
+               continuar = Operaciones.EjecutarOperacion(usuarioId, opcion);
+            }            
         }
-
-        
-
-
-
     }
 }
