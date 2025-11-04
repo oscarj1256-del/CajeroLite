@@ -1,32 +1,22 @@
 ﻿using System;
 
-namespace CajeroLite.App
+namespace CajeroLite.IO
 {
     public static class IO
     {
-        // Muestra el menú principal y permite realizar operaciones básicas
-        public static string MostrarMenu(string idUsuario)
+        public static void MostrarEncabezado()
         {
             Console.Clear();
-            MostrarMensaje("=====================================", "info");
-            MostrarMensaje("        CAJEROLITE - MENÚ PRINCIPAL  ", "exito");
-            MostrarMensaje("=====================================", "info");
+            IO.MostrarMensaje("===========================================", "info");
+            IO.MostrarMensaje("              Cajero- Lite ", "exito");
+            IO.MostrarMensaje("===========================================", "info");
             Console.WriteLine();
-            MostrarMensaje($"Usuario conectado: {idUsuario}", "info");
-            Console.WriteLine();
-
-            Console.WriteLine("1. Consultar saldo");
-            Console.WriteLine("2. Depositar dinero");
-            Console.WriteLine("3. Retirar dinero");
-            IO.MostrarMensaje("4. Salir","error");
-            Console.WriteLine();
-
-            // Capturamos la opción y la devolvemos
-            string opcion = LeerTexto("Seleccione una opción (1-4): ");
-            return opcion;
         }
 
-
+        internal static void MostrarMensajeBloqueo()
+        {
+            MostrarMensaje("Ha excedido el número de intentos. Su cuenta ha sido bloqueada.", "error");
+        }
 
         public static void MostrarMensaje(string mensaje, string tipo = "info")
         {
@@ -120,5 +110,6 @@ namespace CajeroLite.App
             return pin;
         }
 
+        
     }
 }
