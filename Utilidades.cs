@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CajeroLite.IO;
 
-namespace CajeroLite.App
+namespace CajeroLite.Utilidades
 {
     public static class Utilidades
     {
@@ -24,7 +24,7 @@ namespace CajeroLite.App
         public static void Pausar()
         {
             Console.WriteLine();
-            IO.LeerTexto("Presione ENTER para continuar...");
+            IO.IO.LeerTexto("Presione ENTER para continuar...");
         }
     }
 }
