@@ -73,7 +73,8 @@ namespace CajeroLite.POO
                 Console.WriteLine("1. Consultar saldo");
                 Console.WriteLine("2. Depositar dinero");
                 Console.WriteLine("3. Retirar dinero");
-                IO.IO.MostrarMensaje("4. Salir", "info");
+                Console.WriteLine("4. Cambiar PIN");
+                IO.IO.MostrarMensaje("5. Salir", "info");
                 Console.WriteLine();
 
                 string opcion = IO.IO.LeerTexto("Seleccione una opción (1-4): ");
@@ -120,6 +121,11 @@ namespace CajeroLite.POO
                         break;
 
                     case "4":
+                        string nuevoPin = IO.IO.LeerPIN("Ingrese su nuevo PIN: ");
+                       Usuario.ValidarPIN(nuevoPin);                        
+                        break;
+
+                    case "5":
                         IO.IO.MostrarMensaje("Gracias por usar CajeroLite. ¡Hasta pronto!", "exito");
                         repetir = false;
                         break;
