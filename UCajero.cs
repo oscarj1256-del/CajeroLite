@@ -7,7 +7,7 @@ namespace CajeroLite.POO
         {
             new Usuario("1001", "1234", "Oscar Vanegas", new Cuenta(1000)),
             new Usuario("1002", "5678", "Linda Ortiz", new Cuenta(1500)),
-            new Usuario("1003", "9012", "Ana Gomez", new Cuenta(2000))
+            new Usuario("1003", "7890", "Ana Gomez", new Cuenta(2000))
         };
 
         public void Iniciar()
